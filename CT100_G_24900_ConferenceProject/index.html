@@ -5,13 +5,17 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Student Technology and Innovation Conference</title>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
   <link rel="stylesheet" href="css/style.css">
 </head>
 
 <body>
   <header class="site-header">
     <div class="container nav-bar">
-      <a href="index.html" class="brand">STIC 2026</a>
+      <a href="index.html" class="brand">
+        <span class="brand-mark">S</span>
+        <span>STIC <span class="brand-year">2026</span></span>
+      </a>
       <nav class="nav-links">
         <a href="index.html" class="active">Home</a>
         <a href="register.html">Register</a>
@@ -22,15 +26,28 @@
   <main class="container">
     <!-- Hero section: conference name, description, date, venue -->
     <section class="hero">
+      <span class="eyebrow">Student Technology & Innovation</span>
       <h1>Student Technology and Innovation Conference</h1>
       <p class="hero-text">
         A three-day gathering of students, developers and innovators.
         Attend keynote talks, explore student projects, and join hands-on
         workshops on the technologies shaping the future.
       </p>
-      <div class="event-details">
-        <p><strong>Date:</strong> 20 to 22 November 2026</p>
-        <p><strong>Venue:</strong> Kirinyaga University, Main Auditorium</p>
+      <div class="event-chips">
+        <div class="chip">
+          <span class="chip-icon"><i class="fa-regular fa-calendar-days"></i></span>
+          <div>
+            <small>Date</small>
+            <strong>20 to 22 November 2026</strong>
+          </div>
+        </div>
+        <div class="chip">
+          <span class="chip-icon"><i class="fa-solid fa-location-dot"></i></span>
+          <div>
+            <small>Venue</small>
+            <strong>Kirinyaga University, Main Auditorium</strong>
+          </div>
+        </div>
       </div>
       <a href="register.html" class="btn btn-primary">Register Now</a>
     </section>
@@ -38,17 +55,32 @@
     <!-- Quick overview of the participation options -->
     <section class="info-grid">
       <div class="info-card">
+        <div class="feature-icon"><i class="fa-solid fa-microphone-lines"></i></div>
         <h2>Conference Only</h2>
         <p>Full access to keynotes, exhibitions and student project showcases.</p>
+        <span class="feature-price">KSh 1,000 registration</span>
       </div>
-      <div class="info-card">
+      <div class="info-card featured">
+        <span class="badge">Most popular</span>
+        <div class="feature-icon"><i class="fa-solid fa-pen-to-square"></i></div>
         <h2>Workshop Participant</h2>
         <p>Everything in Conference Only, plus one hands-on workshop of your choice.</p>
+        <span class="feature-price">KSh 1,750 registration + workshop</span>
       </div>
       <div class="info-card">
+        <div class="feature-icon"><i class="fa-solid fa-utensils"></i></div>
         <h2>Lunch Catering</h2>
         <p>Add lunch for each conference day during registration.</p>
+        <span class="feature-price">KSh 300 per day</span>
       </div>
+    </section>
+
+    <section class="cta-band">
+      <div>
+        <h2>Ready to join us?</h2>
+        <p>Registration takes about two minutes. Your fee updates as you go.</p>
+      </div>
+      <a href="register.html" class="btn btn-light">Start registration</a>
     </section>
   </main>
 
