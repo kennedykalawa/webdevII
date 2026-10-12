@@ -1,4 +1,4 @@
-
+<?php
 // --- Fee Rules (keep in sync with js/script.js) ---
 const REGISTRATION_FEE = 1000;
 const ATTENDANCE_FEE_PER_DAY = 500;
@@ -21,21 +21,6 @@ const ALLOWED_WORKSHOPS = [
 ];
 
 /**
- * Returns a trimmed POST value, or an empty string if the field was not sent.
- */
-function getPostValue($fieldName)
-{
-    return isset($_POST[$fieldName]) ? trim($_POST[$fieldName]) : '';
-}
-
-/**
- * Escapes output so user input cannot inject HTML.
- */
-function e($value)
-{
-    return htmlspecialchars($value, ENT_QUOTES, 'UTF-8');
-}
- /**
  * Returns a trimmed POST value, or an empty string if the field was not sent.
  */
 function getPostValue($fieldName)
