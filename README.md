@@ -71,4 +71,4 @@ screenshots/      Images used in this README
 2. Put the project in `htdocs`, or link it there.
 3. Open `http://localhost/CT100_G_24900_24_ConferenceProject/index.html`.
 
-Full technical details are in `PROJECT_EXPLANATION.md`.
+
