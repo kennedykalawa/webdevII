@@ -6,28 +6,44 @@
 
 :root {
   --primary: #6366f1;
-  --primary-glow: rgba(99, 102, 241, 0.5);
-  --secondary: #a855f7;
+  --primary-glow: rgba(99, 102, 241, 0.4);
+  --secondary: #c084fc;
   --accent: #22d3ee;
-  --bg-deep: #020617;
-  --bg-card: rgba(15, 23, 42, 0.6);
-  --bg-input: rgba(2, 6, 23, 0.8);
+  --bg-deep: #02040a;
+  --bg-card: rgba(15, 23, 42, 0.4);
+  --bg-input: rgba(2, 6, 23, 0.7);
   --text-main: #f8fafc;
   --text-muted: #94a3b8;
-  --border-glass: rgba(255, 255, 255, 0.08);
+  --text-dim: #64748b;
+  --border-glass: rgba(255, 255, 255, 0.06);
+  --border-glow: rgba(99, 102, 241, 0.2);
+}
+
+@keyframes fadeIn {
+  from { opacity: 0; transform: translateY(20px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+@keyframes shimmer {
+  0% { background-position: -200% 0; }
+  100% { background-position: 200% 0; }
 }
 
 body {
   font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
   background-color: var(--bg-deep);
-  background-image: 
+  background-image:
     radial-gradient(circle at 0% 0%, rgba(99, 102, 241, 0.15) 0%, transparent 35%),
     radial-gradient(circle at 100% 100%, rgba(168, 85, 247, 0.15) 0%, transparent 35%);
   background-attachment: fixed;
   color: var(--text-main);
-  line-height: 1.6;
+  line-height: 1.7;
   -webkit-font-smoothing: antialiased;
   overflow-x: hidden;
+}
+
+main.container {
+  animation: fadeIn 0.8s cubic-bezier(0.23, 1, 0.32, 1) forwards;
 }
 
 .container {
@@ -118,8 +134,10 @@ a {
 
 .btn-primary {
   background: linear-gradient(135deg, var(--primary), var(--secondary));
+  background-size: 200% auto;
   color: #ffffff;
   box-shadow: 0 10px 25px -5px var(--primary-glow);
+  animation: shimmer 4s linear infinite;
 }
 
 .btn-primary:hover {
@@ -142,19 +160,29 @@ a {
 /* --- Home Page --- */
 .hero {
   text-align: center;
-  padding: 160px 40px;
+  padding: 120px 40px;
   margin: 60px auto;
   background: var(--bg-card);
-  backdrop-filter: blur(12px);
+  backdrop-filter: blur(20px);
+  -webkit-backdrop-filter: blur(20px);
   border-radius: 48px;
   border: 1px solid var(--border-glass);
   box-shadow: 0 40px 100px -20px rgba(0, 0, 0, 0.5);
   max-width: 1100px;
   position: relative;
+  overflow: hidden;
+}
+
+.hero::before {
+  content: '';
+  position: absolute;
+  top: 0; left: 0; right: 0; height: 1px;
+  background: linear-gradient(to right, transparent, rgba(255, 255, 255, 0.2), transparent);
+  pointer-events: none;
 }
 
 .hero h1 {
-  font-size: 4.5rem;
+  font-size: clamp(2.5rem, 8vw, 4.5rem);
   color: var(--text-main);
   margin-bottom: 24px;
   line-height: 1.1;
@@ -203,20 +231,32 @@ a {
 
 .info-grid {
   display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+  grid-template-columns: repeat(3, 1fr);
   gap: 32px;
   padding: 0 0 120px;
 }
 
 .info-card {
   background: var(--bg-card);
-  backdrop-filter: blur(12px);
+  backdrop-filter: blur(20px);
+  -webkit-backdrop-filter: blur(20px);
   padding: 48px;
   border-radius: 32px;
   border: 1px solid var(--border-glass);
-  transition: all 0.5s cubic-bezier(0.23, 1, 0.32, 1);
+  transition: all 0.4s cubic-bezier(0.34, 1.56, 0.64, 1);
   position: relative;
   overflow: hidden;
+}
+
+.info-card:first-child {
+  grid-column: span 2;
+}
+
+.info-card:hover {
+  transform: translateY(-10px) scale(1.02);
+  border-color: rgba(99, 102, 241, 0.4);
+  background: rgba(15, 23, 42, 0.8);
+  box-shadow: 0 30px 60px -15px rgba(0, 0, 0, 0.6), 0 0 20px var(--primary-glow);
 }
 
 .info-card::before {
@@ -226,13 +266,6 @@ a {
   background: linear-gradient(to right, var(--primary), var(--secondary));
   opacity: 0;
   transition: opacity 0.3s ease;
-}
-
-.info-card:hover {
-  transform: translateY(-10px);
-  border-color: rgba(99, 102, 241, 0.4);
-  background: rgba(15, 23, 42, 0.8);
-  box-shadow: 0 30px 60px -15px rgba(0, 0, 0, 0.6);
 }
 
 .info-card:hover::before {
@@ -264,7 +297,8 @@ a {
 .fee-card,
 .result-card {
   background: var(--bg-card);
-  backdrop-filter: blur(12px);
+  backdrop-filter: blur(20px);
+  -webkit-backdrop-filter: blur(20px);
   padding: 48px;
   border-radius: 32px;
   border: 1px solid var(--border-glass);
@@ -287,20 +321,23 @@ a {
 }
 
 fieldset {
-  border: 1px solid var(--border-glass);
-  border-radius: 24px;
+  border: none;
+  border-left: 4px solid var(--primary);
+  border-radius: 0 24px 24px 0;
   padding: 32px;
   margin-bottom: 40px;
   background-color: rgba(2, 6, 23, 0.4);
 }
 
 legend {
-  font-weight: 600;
-  color: var(--text-muted);
-  padding: 0 16px;
-  font-size: 0.7rem;
-  text-transform: uppercase;
-  letter-spacing: 0.2em;
+  font-weight: 700;
+  color: var(--primary);
+  padding: 0;
+  font-size: 1rem;
+  text-transform: none;
+  letter-spacing: normal;
+  margin-bottom: 16px;
+  display: block;
 }
 
 /* --- Form Elements --- */
@@ -325,6 +362,7 @@ legend {
   font-size: 1rem;
   color: var(--text-main);
   background-color: var(--bg-input);
+  backdrop-filter: blur(4px);
   transition: all 0.3s ease;
 }
 
@@ -333,7 +371,7 @@ legend {
   outline: none;
   border-color: var(--primary);
   background-color: rgba(2, 6, 23, 1);
-  box-shadow: 0 0 0 4px rgba(99, 102, 241, 0.2);
+  box-shadow: 0 0 15px var(--primary-glow);
 }
 
 .radio-group {
@@ -412,7 +450,7 @@ legend {
 
 .fee-table td {
   padding: 18px 0;
-  border-bottom: 1px solid var(--border-glass);
+  border-bottom: 1px dotted var(--border-glass);
   color: var(--text-muted);
   font-size: 1rem;
 }
@@ -434,6 +472,7 @@ legend {
   border-bottom: none;
   padding-top: 32px;
   font-weight: 800;
+  text-shadow: 0 0 10px var(--primary-glow);
 }
 
 .fee-note {
@@ -465,6 +504,19 @@ legend {
 @media (max-width: 1024px) {
   .register-layout { grid-template-columns: 1fr; }
   .hero h1 { font-size: 3.5rem; }
+}
+
+@media (max-width: 850px) {
+  .register-layout {
+    grid-template-columns: 1fr;
+    padding: 40px 0;
+  }
+  .info-grid {
+    grid-template-columns: 1fr;
+  }
+  .info-card:first-child {
+    grid-column: span 1;
+  }
 }
 
 @media (max-width: 640px) {
