@@ -4,10 +4,23 @@
   box-sizing: border-box;
 }
 
+:root {
+  --primary: #2563eb;
+  --primary-dark: #1d4ed8;
+  --secondary: #7c3aed;
+  --accent: #06b6d4;
+  --bg-main: #f8fafc;
+  --text-main: #0f172a;
+  --text-muted: #64748b;
+  --card-bg: rgba(255, 255, 255, 0.9);
+  --border-color: #e2e8f0;
+}
+
 body {
   font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
-  background-color: #f8fafc;
-  color: #0f172a;
+  background: radial-gradient(circle at top right, #eff6ff, #f8fafc, #f5f3ff);
+  background-attachment: fixed;
+  color: var(--text-main);
   line-height: 1.6;
   -webkit-font-smoothing: antialiased;
 }
@@ -19,20 +32,21 @@ body {
 }
 
 a {
-  color: #2563eb;
+  color: var(--primary);
   text-decoration: none;
   transition: all 0.2s ease;
 }
 
 /* --- Header & Navigation --- */
 .site-header {
-  background-color: rgba(255, 255, 255, 0.8);
-  backdrop-filter: blur(12px);
+  background-color: rgba(255, 255, 255, 0.7);
+  backdrop-filter: blur(16px);
+  -webkit-backdrop-filter: blur(16px);
   padding: 1rem 0;
   position: sticky;
   top: 0;
   z-index: 1000;
-  border-bottom: 1px solid #e2e8f0;
+  border-bottom: 1px solid rgba(226, 232, 240, 0.6);
 }
 
 .nav-bar {
@@ -42,7 +56,7 @@ a {
 }
 
 .brand {
-  color: #0f172a;
+  color: var(--text-main);
   font-size: 1.5rem;
   font-weight: 800;
   letter-spacing: -0.03em;
@@ -53,10 +67,11 @@ a {
 
 .brand::before {
   content: '';
-  width: 24px;
-  height: 24px;
-  background: linear-gradient(135deg, #2563eb, #7c3aed);
-  border-radius: 6px;
+  width: 28px;
+  height: 28px;
+  background: linear-gradient(135deg, var(--primary), var(--secondary));
+  border-radius: 8px;
+  box-shadow: 0 4px 10px rgba(37, 99, 235, 0.3);
 }
 
 .nav-links {
@@ -65,17 +80,29 @@ a {
 }
 
 .nav-links a {
-  color: #64748b;
+  color: var(--text-muted);
   font-weight: 500;
   font-size: 0.95rem;
+  position: relative;
 }
 
 .nav-links a.active {
-  color: #2563eb;
+  color: var(--primary);
+}
+
+.nav-links a.active::after {
+  content: '';
+  position: absolute;
+  bottom: -5px;
+  left: 0;
+  width: 100%;
+  height: 2px;
+  background: var(--primary);
+  border-radius: 2px;
 }
 
 .nav-links a:hover {
-  color: #2563eb;
+  color: var(--primary);
 }
 
 /* --- Buttons --- */
@@ -83,9 +110,9 @@ a {
   display: inline-flex;
   align-items: center;
   justify-content: center;
-  padding: 12px 28px;
+  padding: 14px 32px;
   border: none;
-  border-radius: 10px;
+  border-radius: 12px;
   font-size: 1rem;
   font-weight: 600;
   cursor: pointer;
@@ -94,92 +121,95 @@ a {
 }
 
 .btn-primary {
-  background: linear-gradient(135deg, #2563eb, #1d4ed8);
+  background: linear-gradient(135deg, var(--primary), var(--primary-dark));
   color: #ffffff;
-  box-shadow: 0 4px 12px rgba(37, 99, 235, 0.25);
+  box-shadow: 0 10px 20px -5px rgba(37, 99, 235, 0.4);
 }
 
 .btn-primary:hover {
-  transform: translateY(-2px);
-  box-shadow: 0 8px 20px rgba(37, 99, 235, 0.35);
+  transform: translateY(-3px);
+  box-shadow: 0 15px 25px -5px rgba(37, 99, 235, 0.5);
   filter: brightness(1.1);
 }
 
 .btn-secondary {
   background-color: #ffffff;
   color: #475569;
-  border: 1px solid #e2e8f0;
+  border: 1px solid var(--border-color);
 }
 
 .btn-secondary:hover {
   background-color: #f8fafc;
   border-color: #cbd5e1;
+  transform: translateY(-2px);
 }
 
 /* --- Home Page --- */
 .hero {
   text-align: center;
-  padding: 120px 40px;
+  padding: 140px 40px;
   margin: 60px auto;
-  background: #ffffff;
-  border-radius: 32px;
-  border: 1px solid #f1f5f9;
-  box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.05);
+  background: var(--card-bg);
+  backdrop-filter: blur(10px);
+  border-radius: 40px;
+  border: 1px solid rgba(255, 255, 255, 0.6);
+  box-shadow: 0 30px 60px -12px rgba(0, 0, 0, 0.08);
   max-width: 1000px;
   position: relative;
   overflow: hidden;
 }
 
-.hero::after {
+.hero::before {
   content: '';
   position: absolute;
-  top: -10%;
-  right: -10%;
-  width: 300px;
-  height: 300px;
-  background: radial-gradient(circle, rgba(37, 99, 235, 0.05) 0%, transparent 70%);
-  z-index: 0;
+  top: -20%;
+  left: -10%;
+  width: 400px;
+  height: 400px;
+  background: radial-gradient(circle, rgba(37, 99, 235, 0.08) 0%, transparent 70%);
+  z-index: -1;
 }
 
 .hero h1 {
-  font-size: 4rem;
-  color: #0f172a;
+  font-size: 4.5rem;
+  color: var(--text-main);
   margin-bottom: 24px;
   line-height: 1.1;
   font-weight: 800;
-  letter-spacing: -0.04em;
-  position: relative;
+  letter-spacing: -0.05em;
+  background: linear-gradient(to bottom right, #0f172a, #334155);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
 }
 
 .hero-text {
-  max-width: 650px;
+  max-width: 680px;
   margin: 0 auto 48px;
-  color: #64748b;
+  color: var(--text-muted);
   font-size: 1.3rem;
-  position: relative;
 }
 
 .event-details {
   margin-bottom: 56px;
   display: flex;
   justify-content: center;
-  gap: 20px;
+  gap: 16px;
   flex-wrap: wrap;
-  position: relative;
 }
 
 .event-details p {
-  background: #f1f5f9;
+  background: white;
   padding: 12px 24px;
   border-radius: 100px;
   color: #475569;
   font-size: 0.95rem;
   font-weight: 600;
-  border: 1px solid #e2e8f0;
+  border: 1px solid var(--border-color);
+  box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.05);
 }
 
 .event-details strong {
-  color: #2563eb;
+  color: var(--primary);
   margin-right: 4px;
 }
 
@@ -191,29 +221,31 @@ a {
 }
 
 .info-card {
-  background-color: #ffffff;
+  background: var(--card-bg);
+  backdrop-filter: blur(10px);
   padding: 40px;
-  border-radius: 24px;
-  border: 1px solid #f1f5f9;
+  border-radius: 32px;
+  border: 1px solid rgba(255, 255, 255, 0.8);
   transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
-  position: relative;
+  box-shadow: 0 10px 20px -5px rgba(0, 0, 0, 0.03);
 }
 
 .info-card:hover {
-  border-color: #2563eb;
-  transform: translateY(-10px);
-  box-shadow: 0 20px 40px -15px rgba(0, 0, 0, 0.08);
+  border-color: var(--primary);
+  transform: translateY(-12px);
+  box-shadow: 0 25px 50px -12px rgba(37, 99, 235, 0.12);
+  background: #ffffff;
 }
 
 .info-card h2 {
-  font-size: 1.5rem;
+  font-size: 1.6rem;
   margin-bottom: 16px;
-  color: #0f172a;
+  color: var(--text-main);
   font-weight: 700;
 }
 
 .info-card p {
-  color: #64748b;
+  color: var(--text-muted);
   font-size: 1.1rem;
 }
 
@@ -229,16 +261,17 @@ a {
 .form-card,
 .fee-card,
 .result-card {
-  background-color: #ffffff;
+  background: var(--card-bg);
+  backdrop-filter: blur(10px);
   padding: 48px;
-  border-radius: 24px;
-  border: 1px solid #f1f5f9;
-  box-shadow: 0 10px 30px -10px rgba(0, 0, 0, 0.04);
+  border-radius: 32px;
+  border: 1px solid rgba(255, 255, 255, 0.8);
+  box-shadow: 0 20px 40px -15px rgba(0, 0, 0, 0.06);
 }
 
 .form-card h1,
 .result-card h1 {
-  color: #0f172a;
+  color: var(--text-main);
   margin-bottom: 12px;
   font-size: 2.5rem;
   font-weight: 800;
@@ -246,26 +279,26 @@ a {
 }
 
 .intro {
-  color: #64748b;
+  color: var(--text-muted);
   margin-bottom: 40px;
   font-size: 1.1rem;
 }
 
 fieldset {
-  border: 1px solid #e2e8f0;
-  border-radius: 20px;
+  border: 1px solid var(--border-color);
+  border-radius: 24px;
   padding: 32px;
   margin-bottom: 40px;
-  background-color: #fafbfc;
+  background-color: rgba(248, 250, 252, 0.5);
 }
 
 legend {
   font-weight: 700;
-  color: #64748b;
+  color: var(--text-muted);
   padding: 0 16px;
-  font-size: 0.8rem;
+  font-size: 0.75rem;
   text-transform: uppercase;
-  letter-spacing: 0.1em;
+  letter-spacing: 0.15em;
 }
 
 /* --- Form Elements --- */
@@ -279,7 +312,7 @@ legend {
 .form-group label,
 .group-label {
   font-weight: 600;
-  color: #334155;
+  color: #475569;
   font-size: 0.9rem;
 }
 
@@ -292,7 +325,7 @@ legend {
   border: 1px solid #cbd5e1;
   border-radius: 12px;
   font-size: 1rem;
-  color: #1e293b;
+  color: var(--text-main);
   transition: all 0.2s ease;
   background-color: #ffffff;
 }
@@ -300,7 +333,7 @@ legend {
 .form-group input:focus,
 .form-group select:focus {
   outline: none;
-  border-color: #2563eb;
+  border-color: var(--primary);
   box-shadow: 0 0 0 4px rgba(37, 99, 235, 0.1);
 }
 
@@ -319,12 +352,12 @@ legend {
   gap: 12px;
   cursor: pointer;
   padding: 14px 20px;
-  border: 1px solid #e2e8f0;
+  border: 1px solid var(--border-color);
   border-radius: 12px;
   background: white;
   transition: all 0.2s ease;
   font-size: 0.95rem;
-  color: #64748b;
+  color: var(--text-muted);
 }
 
 .radio-group label:hover,
@@ -334,9 +367,9 @@ legend {
 }
 
 .radio-group label:has(input:checked) {
-  border-color: #2563eb;
+  border-color: var(--primary);
   background-color: #eff6ff;
-  color: #2563eb;
+  color: var(--primary);
   font-weight: 600;
 }
 
@@ -373,7 +406,7 @@ legend {
 /* --- Fee Summary --- */
 .fee-card h2 {
   margin-bottom: 32px;
-  color: #0f172a;
+  color: var(--text-main);
   font-size: 1.75rem;
   font-weight: 800;
   letter-spacing: -0.02em;
@@ -387,15 +420,15 @@ legend {
 
 .fee-table td {
   padding: 16px 0;
-  border-bottom: 1px solid #f1f5f9;
-  color: #64748b;
+  border-bottom: 1px solid var(--border-color);
+  color: var(--text-muted);
   font-size: 1rem;
 }
 
 .fee-table td:last-child {
   text-align: right;
   font-weight: 600;
-  color: #1e293b;
+  color: var(--text-main);
 }
 
 .discount-row td {
@@ -405,8 +438,8 @@ legend {
 }
 
 .total-row td {
-  font-size: 1.5rem;
-  color: #0f172a;
+  font-size: 1.75rem;
+  color: var(--text-main);
   border-bottom: none;
   padding-top: 32px;
   font-weight: 800;
@@ -424,7 +457,7 @@ legend {
   text-align: center;
   font-size: 0.95rem;
   font-weight: 500;
-  color: #64748b;
+  color: var(--text-muted);
 }
 
 /* --- Confirmation Page --- */
@@ -441,9 +474,9 @@ legend {
 .receipt {
   background-color: #f8fafc;
   padding: 32px;
-  border-radius: 20px;
+  border-radius: 24px;
   margin: 32px 0;
-  border: 1px solid #e2e8f0;
+  border: 1px solid var(--border-color);
 }
 
 .receipt p {
@@ -456,7 +489,7 @@ legend {
 }
 
 .receipt strong {
-  color: #64748b;
+  color: var(--text-muted);
   font-weight: 500;
 }
 
@@ -469,7 +502,7 @@ legend {
 .thank-you {
   margin-top: 40px;
   font-weight: 600;
-  color: #64748b;
+  color: var(--text-muted);
   text-align: center;
   font-size: 1.1rem;
 }
@@ -480,7 +513,7 @@ legend {
   padding: 80px 0;
   color: #94a3b8;
   background-color: #ffffff;
-  border-top: 1px solid #f1f5f9;
+  border-top: 1px solid var(--border-color);
   font-size: 0.9rem;
 }
 
@@ -491,7 +524,7 @@ legend {
   }
 
   .hero h1 {
-    font-size: 3rem;
+    font-size: 3.2rem;
   }
 }
 
