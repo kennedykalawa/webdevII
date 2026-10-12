@@ -8,39 +8,39 @@ A registration website for the Student Technology and Innovation Conference. Par
 
 Event name, date and venue, with a Register Now button.
 
-![Packages](screenshots/2.png)
+![Packages](CT100_G_24900_ConferenceProject/screenshots/2.png)
 
 The three participation options.
 
-![Call to action](screenshots/3.png)
+![Call to action](CT100_G_24900_ConferenceProject/screenshots/3.png)
 
 Closing prompt to register.
 
 ## Registration
 
-![Personal details](screenshots/4.png)
+![Personal details](CT100_G_24900_ConferenceProject/screenshots/4.png)
 
 Personal details, with the fee summary updating beside the form.
 
-![Participation options](screenshots/5.png)
+![Participation options](CT100_G_24900_ConferenceProject/screenshots/5.png)
 
 Participation category, days, lunch and contact details.
 
-![Workshop selected](screenshots/6.png)
+![Workshop selected](CT100_G_24900_ConferenceProject/screenshots/6.png)
 
 Choosing Workshop Participant shows the workshop list.
 
-![Fee summary](screenshots/7.png)
+![Fee summary](CT100_G_24900_ConferenceProject/screenshots/7.png)
 
 The fee summary with the 10% discount for three days.
 
 ## Confirmation
 
-![Confirmation](screenshots/8.png)
+![Confirmation](CT100_G_24900_ConferenceProject/screenshots/8.png)
 
 Registration details after server validation.
 
-![Confirmation total](screenshots/9.png)
+![Confirmation total](CT100_G_24900_ConferenceProject/screenshots/9.png)
 
 The total is recalculated on the server.
 
