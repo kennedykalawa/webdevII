@@ -96,3 +96,50 @@ $clientTotal = getPostValue('clientTotal');
 
 
 
+// --- Server-side validation ---
+$errors = [];
+
+if ($fullName === '') {
+    $errors[] = 'Full name is required.';
+}
+
+if ($admissionNumber === '' || !preg_match('/^[A-Za-z0-9\/]+$/', $admissionNumber)) {
+    $errors[] = 'Admission number is invalid.';
+}
+
+if ($email === '' || filter_var($email, FILTER_VALIDATE_EMAIL) === false) {
+    $errors[] = 'Email address is invalid.';
+}
+
+if (!preg_match('/^\d{10}$/', $phone)) {
+    $errors[] = 'Phone number must contain exactly 10 digits.';
+}
+
+if (!in_array($yearOfStudy, ALLOWED_YEARS, true)) {
+    $errors[] = 'Year of study is invalid.';
+}
+
+if (!array_key_exists($category, ALLOWED_CATEGORIES)) {
+    $errors[] = 'Participation category is invalid.';
+}
+
+$days = filter_var($daysRaw, FILTER_VALIDATE_INT, [
+    'options' => ['min_range' => 1, 'max_range' => 3]
+]);
+if ($days === false) {
+    $errors[] = 'Number of conference days must be between 1 and 3.';
+    $days = 0;
+}
+
+$hasWorkshop = ($category === 'workshopParticipant');
+if ($hasWorkshop && !in_array($workshop, ALLOWED_WORKSHOPS, true)) {
+    $errors[] = 'Please choose a valid workshop.';
+}
+
+// --- Independent fee calculation (never trust the JavaScript total) ---
+$fees = calculateFees($days, $hasWorkshop, $hasLunch);
+
+// Compare the amount JavaScript sent, for the demonstration and marking
+$totalMismatch = ($clientTotal !== '' && (int) $clientTotal !== $fees['total']);
+?>
+
