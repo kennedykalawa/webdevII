@@ -5,20 +5,24 @@
 }
 
 :root {
-  --primary: #2563eb;
-  --primary-dark: #1d4ed8;
-  --secondary: #7c3aed;
+  --primary: #3b82f6;
+  --primary-dark: #2563eb;
+  --secondary: #8b5cf6;
   --accent: #06b6d4;
-  --bg-main: #f8fafc;
-  --text-main: #0f172a;
-  --text-muted: #64748b;
-  --card-bg: rgba(255, 255, 255, 0.9);
-  --border-color: #e2e8f0;
+  /* Darker, more muted background tones */
+  --bg-main: #0f172a; 
+  --bg-secondary: #1e293b;
+  --text-main: #f1f5f9;
+  --text-muted: #94a3b8;
+  --card-bg: rgba(30, 41, 59, 0.7);
+  --border-color: #334155;
+  --input-bg: #0f172a;
 }
 
 body {
   font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
-  background: radial-gradient(circle at top right, #eff6ff, #f8fafc, #f5f3ff);
+  /* Deep navy gradient for a professional dark mode */
+  background: radial-gradient(circle at top right, #1e293b, #0f172a, #020617);
   background-attachment: fixed;
   color: var(--text-main);
   line-height: 1.6;
@@ -39,14 +43,14 @@ a {
 
 /* --- Header & Navigation --- */
 .site-header {
-  background-color: rgba(255, 255, 255, 0.7);
+  background-color: rgba(15, 23, 42, 0.8);
   backdrop-filter: blur(16px);
   -webkit-backdrop-filter: blur(16px);
   padding: 1rem 0;
   position: sticky;
   top: 0;
   z-index: 1000;
-  border-bottom: 1px solid rgba(226, 232, 240, 0.6);
+  border-bottom: 1px solid var(--border-color);
 }
 
 .nav-bar {
@@ -87,7 +91,7 @@ a {
 }
 
 .nav-links a.active {
-  color: var(--primary);
+  color: var(--text-main);
 }
 
 .nav-links a.active::after {
@@ -102,7 +106,7 @@ a {
 }
 
 .nav-links a:hover {
-  color: var(--primary);
+  color: var(--text-main);
 }
 
 /* --- Buttons --- */
@@ -133,14 +137,14 @@ a {
 }
 
 .btn-secondary {
-  background-color: #ffffff;
-  color: #475569;
+  background-color: transparent;
+  color: var(--text-main);
   border: 1px solid var(--border-color);
 }
 
 .btn-secondary:hover {
-  background-color: #f8fafc;
-  border-color: #cbd5e1;
+  background-color: rgba(255,255,255,0.05);
+  border-color: var(--text-muted);
   transform: translateY(-2px);
 }
 
@@ -152,8 +156,8 @@ a {
   background: var(--card-bg);
   backdrop-filter: blur(10px);
   border-radius: 40px;
-  border: 1px solid rgba(255, 255, 255, 0.6);
-  box-shadow: 0 30px 60px -12px rgba(0, 0, 0, 0.08);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  box-shadow: 0 30px 60px -12px rgba(0, 0, 0, 0.4);
   max-width: 1000px;
   position: relative;
   overflow: hidden;
@@ -166,7 +170,7 @@ a {
   left: -10%;
   width: 400px;
   height: 400px;
-  background: radial-gradient(circle, rgba(37, 99, 235, 0.08) 0%, transparent 70%);
+  background: radial-gradient(circle, rgba(59, 130, 246, 0.15) 0%, transparent 70%);
   z-index: -1;
 }
 
@@ -177,7 +181,7 @@ a {
   line-height: 1.1;
   font-weight: 800;
   letter-spacing: -0.05em;
-  background: linear-gradient(to bottom right, #0f172a, #334155);
+  background: linear-gradient(to bottom right, #ffffff, #94a3b8);
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
 }
@@ -198,14 +202,14 @@ a {
 }
 
 .event-details p {
-  background: white;
+  background: var(--bg-secondary);
   padding: 12px 24px;
   border-radius: 100px;
-  color: #475569;
+  color: var(--text-main);
   font-size: 0.95rem;
   font-weight: 600;
   border: 1px solid var(--border-color);
-  box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.05);
+  box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.2);
 }
 
 .event-details strong {
@@ -225,16 +229,16 @@ a {
   backdrop-filter: blur(10px);
   padding: 40px;
   border-radius: 32px;
-  border: 1px solid rgba(255, 255, 255, 0.8);
+  border: 1px solid rgba(255, 255, 255, 0.05);
   transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
-  box-shadow: 0 10px 20px -5px rgba(0, 0, 0, 0.03);
+  box-shadow: 0 10px 20px -5px rgba(0, 0, 0, 0.2);
 }
 
 .info-card:hover {
   border-color: var(--primary);
   transform: translateY(-12px);
-  box-shadow: 0 25px 50px -12px rgba(37, 99, 235, 0.12);
-  background: #ffffff;
+  box-shadow: 0 25px 50px -12px rgba(37, 99, 235, 0.2);
+  background: rgba(30, 41, 59, 0.9);
 }
 
 .info-card h2 {
@@ -265,8 +269,8 @@ a {
   backdrop-filter: blur(10px);
   padding: 48px;
   border-radius: 32px;
-  border: 1px solid rgba(255, 255, 255, 0.8);
-  box-shadow: 0 20px 40px -15px rgba(0, 0, 0, 0.06);
+  border: 1px solid rgba(255, 255, 255, 0.05);
+  box-shadow: 0 20px 40px -15px rgba(0, 0, 0, 0.4);
 }
 
 .form-card h1,
@@ -289,7 +293,7 @@ fieldset {
   border-radius: 24px;
   padding: 32px;
   margin-bottom: 40px;
-  background-color: rgba(248, 250, 252, 0.5);
+  background-color: rgba(15, 23, 42, 0.4);
 }
 
 legend {
@@ -312,7 +316,7 @@ legend {
 .form-group label,
 .group-label {
   font-weight: 600;
-  color: #475569;
+  color: #cbd5e1;
   font-size: 0.9rem;
 }
 
@@ -322,19 +326,19 @@ legend {
 .form-group input[type="number"],
 .form-group select {
   padding: 14px 18px;
-  border: 1px solid #cbd5e1;
+  border: 1px solid var(--border-color);
   border-radius: 12px;
   font-size: 1rem;
   color: var(--text-main);
   transition: all 0.2s ease;
-  background-color: #ffffff;
+  background-color: var(--input-bg);
 }
 
 .form-group input:focus,
 .form-group select:focus {
   outline: none;
   border-color: var(--primary);
-  box-shadow: 0 0 0 4px rgba(37, 99, 235, 0.1);
+  box-shadow: 0 0 0 4px rgba(59, 130, 246, 0.2);
 }
 
 .radio-group {
@@ -354,7 +358,7 @@ legend {
   padding: 14px 20px;
   border: 1px solid var(--border-color);
   border-radius: 12px;
-  background: white;
+  background: var(--bg-secondary);
   transition: all 0.2s ease;
   font-size: 0.95rem;
   color: var(--text-muted);
@@ -362,19 +366,19 @@ legend {
 
 .radio-group label:hover,
 .checkbox-label:hover {
-  border-color: #cbd5e1;
-  background-color: #f8fafc;
+  border-color: var(--text-muted);
+  background-color: rgba(255,255,255,0.05);
 }
 
 .radio-group label:has(input:checked) {
   border-color: var(--primary);
-  background-color: #eff6ff;
+  background-color: rgba(59, 130, 246, 0.1);
   color: var(--primary);
   font-weight: 600;
 }
 
 .error-message {
-  color: #dc2626;
+  color: #ef4444;
   font-size: 0.8rem;
   min-height: 1em;
   font-weight: 500;
@@ -384,11 +388,11 @@ legend {
 .package-message {
   margin-top: 16px;
   padding: 20px;
-  background-color: #f0f7ff;
+  background-color: rgba(30, 58, 138, 0.3);
   border-radius: 12px;
   font-size: 0.95rem;
-  color: #1e40af;
-  border: 1px solid #dbeafe;
+  color: #93c5fd;
+  border: 1px solid rgba(59, 130, 246, 0.3);
   font-weight: 500;
 }
 
@@ -432,7 +436,7 @@ legend {
 }
 
 .discount-row td {
-  color: #16a34a;
+  color: #4ade80;
   font-style: italic;
   font-weight: 500;
 }
@@ -447,7 +451,7 @@ legend {
 
 .fee-note {
   font-size: 0.8rem;
-  color: #94a3b8;
+  color: #64748b;
   margin-bottom: 32px;
   text-align: center;
 }
@@ -462,17 +466,17 @@ legend {
 
 /* --- Confirmation Page --- */
 .result-success {
-  color: #16a34a;
+  color: #4ade80;
   text-align: center;
 }
 
 .result-error {
-  color: #dc2626;
+  color: #ef4444;
   text-align: center;
 }
 
 .receipt {
-  background-color: #f8fafc;
+  background-color: rgba(15, 23, 42, 0.5);
   padding: 32px;
   border-radius: 24px;
   margin: 32px 0;
@@ -484,7 +488,7 @@ legend {
   display: flex;
   justify-content: space-between;
   font-size: 1rem;
-  border-bottom: 1px solid transparent;
+  border-bottom: 1px solid rgba(255,255,255,0.05);
   padding-bottom: 8px;
 }
 
@@ -495,7 +499,7 @@ legend {
 
 .error-list {
   margin: 24px 0 32px 24px;
-  color: #dc2626;
+  color: #ef4444;
   font-weight: 500;
 }
 
@@ -511,8 +515,8 @@ legend {
 .site-footer {
   text-align: center;
   padding: 80px 0;
-  color: #94a3b8;
-  background-color: #ffffff;
+  color: #64748b;
+  background-color: rgba(15, 23, 42, 0.9);
   border-top: 1px solid var(--border-color);
   font-size: 0.9rem;
 }
