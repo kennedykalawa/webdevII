@@ -4,43 +4,43 @@ A registration website for the Student Technology and Innovation Conference. Par
 
 ## Home Page
 
-![Home hero](screenshots/01-home-hero.png)
+![Home hero](screenshots/1.png)
 
 Event name, date and venue, with a Register Now button.
 
-![Packages](screenshots/02-home-packages.png)
+![Packages](screenshots/2.png)
 
 The three participation options.
 
-![Call to action](screenshots/03-home-cta.png)
+![Call to action](screenshots/3.png)
 
 Closing prompt to register.
 
 ## Registration
 
-![Personal details](screenshots/04-register-personal.png)
+![Personal details](screenshots/4.png)
 
 Personal details, with the fee summary updating beside the form.
 
-![Participation options](screenshots/05-register-participation.png)
+![Participation options](screenshots/5.png)
 
 Participation category, days, lunch and contact details.
 
-![Workshop selected](screenshots/06-register-workshop.png)
+![Workshop selected](screenshots/6.png)
 
 Choosing Workshop Participant shows the workshop list.
 
-![Fee summary](screenshots/07-fee-summary.png)
+![Fee summary](screenshots/7.png)
 
 The fee summary with the 10% discount for three days.
 
 ## Confirmation
 
-![Confirmation](screenshots/08-confirmation-success.png)
+![Confirmation](screenshots/8.png)
 
 Registration details after server validation.
 
-![Confirmation total](screenshots/09-confirmation-total.png)
+![Confirmation total](screenshots/9.png)
 
 The total is recalculated on the server.
 
