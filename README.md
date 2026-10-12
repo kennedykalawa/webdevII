@@ -4,7 +4,7 @@ A registration website for the Student Technology and Innovation Conference. Par
 
 ## Home Page
 
-![Home hero](screenshots/1.png)
+![Home hero](CT100_G_24900_ConferenceProject/screenshots/1.png)
 
 Event name, date and venue, with a Register Now button.
 
