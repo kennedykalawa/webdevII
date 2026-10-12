@@ -6,25 +6,43 @@ A registration website for the Student Technology and Innovation Conference. Par
 
 ![Home hero](screenshots/01-home-hero.png)
 
-![Participation options](screenshots/02-home-options.png)
+Event name, date and venue, with a Register Now button.
+
+![Packages](screenshots/02-home-packages.png)
+
+The three participation options.
+
+![Call to action](screenshots/03-home-cta.png)
+
+Closing prompt to register.
 
 ## Registration
 
-The form has personal details and participation options. The fee summary updates as the participant changes any option.
+![Personal details](screenshots/04-register-personal.png)
 
-![Registration form](screenshots/03-register-form.png)
+Personal details, with the fee summary updating beside the form.
 
-Choosing **Workshop Participant** reveals the workshop list and updates the package description.
+![Participation options](screenshots/05-register-participation.png)
 
-![Workshop selected](screenshots/04-workshop-selected.png)
+Participation category, days, lunch and contact details.
 
-![Fee summary](screenshots/05-fee-summary.png)
+![Workshop selected](screenshots/06-register-workshop.png)
+
+Choosing Workshop Participant shows the workshop list.
+
+![Fee summary](screenshots/07-fee-summary.png)
+
+The fee summary with the 10% discount for three days.
 
 ## Confirmation
 
-After validation, `process.php` recalculates the fee on the server and shows the receipt.
+![Confirmation](screenshots/08-confirmation-success.png)
 
-![Confirmation](screenshots/06-confirmation.png)
+Registration details after server validation.
+
+![Confirmation total](screenshots/09-confirmation-total.png)
+
+The total is recalculated on the server.
 
 ## Fees
 
