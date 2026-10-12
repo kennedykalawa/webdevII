@@ -143,3 +143,90 @@ $fees = calculateFees($days, $hasWorkshop, $hasLunch);
 $totalMismatch = ($clientTotal !== '' && (int) $clientTotal !== $fees['total']);
 ?>
 
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Registration Result | STIC 2026</title>
+    <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+    <header class="site-header">
+        <div class="container nav-bar">
+            <a href="index.html" class="brand">STIC 2026</a>
+            <nav class="nav-links">
+                <a href="index.html">Home</a>
+                <a href="register.html">Register</a>
+            </nav>
+        </div>
+    </header>
+
+    <main class="container">
+        <section class="result-card">
+<?php if (!empty($errors)): ?>
+            <!-- Shown when the server rejects the submission -->
+            <h1 class="result-error">REGISTRATION NOT COMPLETED</h1>
+            <p>The following problems were found:</p>
+            <ul class="error-list">
+<?php foreach ($errors as $error): ?>
+                <li><?= e($error) ?></li>
+<?php endforeach; ?>
+            </ul>
+            <a href="register.html" class="btn btn-primary">Return to registration</a>
+<?php else: ?>
+            <!-- Shown when every server-side check passes -->
+            <h1 class="result-success">REGISTRATION SUCCESSFUL</h1>
+            <div class="receipt">
+                <p><strong>Participant:</strong> <?= e($fullName) ?></p>
+                <p><strong>Admission Number:</strong> <?= e($admissionNumber) ?></p>
+                <p><strong>Email:</strong> <?= e($email) ?></p>
+                <p><strong>Phone:</strong> <?= e($phone) ?></p>
+                <p><strong>Year of Study:</strong> Year <?= e($yearOfStudy) ?></p>
+                <p><strong>Participation:</strong> <?= e(ALLOWED_CATEGORIES[$category]) ?></p>
+                <p><strong>Conference Days:</strong> <?= e($days) ?></p>
+                <p><strong>Workshop:</strong> <?= $hasWorkshop ? e($workshop) : 'Not applicable' ?></p>
+                <p><strong>Meals:</strong> <?= $hasLunch ? 'Yes (lunch)' : 'No' ?></p>
+            </div>
+
+            <table class="fee-table">
+                <tr>
+                    <td>Conference registration</td>
+                    <td>KSh <?= number_format($fees['registration']) ?></td>
+                </tr>
+                <tr>
+                    <td>Attendance (<?= e($days) ?> day(s))</td>
+                    <td>KSh <?= number_format($fees['attendance']) ?></td>
+                </tr>
+                <tr>
+                    <td>Workshop</td>
+                    <td>KSh <?= number_format($fees['workshop']) ?></td>
+                </tr>
+                <tr>
+                    <td>Lunch</td>
+                    <td>KSh <?= number_format($fees['meals']) ?></td>
+                </tr>
+                <tr class="discount-row">
+                    <td>10% discount</td>
+                    <td>- KSh <?= number_format($fees['discount']) ?></td>
+                </tr>
+                <tr class="total-row">
+                    <td>TOTAL AMOUNT PAYABLE</td>
+                    <td>KSh <?= number_format($fees['total']) ?></td>
+                </tr>
+            </table>
+
+<?php if ($totalMismatch): ?>
+            <p class="fee-note">The submitted total did not match the server calculation, so the server amount is shown.</p>
+<?php endif; ?>
+
+            <p class="thank-you">Thank you for registering for the Student Technology and Innovation Conference.</p>
+<?php endif; ?>
+        </section>
+    </main>
+
+    <footer class="site-footer">
+        <p>&copy; 2026 Student Technology and Innovation Conference. All rights reserved.</p>
+    </footer>
+</body>
+</html>
